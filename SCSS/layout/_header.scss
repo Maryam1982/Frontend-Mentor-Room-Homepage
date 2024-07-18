@@ -1,0 +1,211 @@
+@use "../utils/" as utils;
+
+header {
+  grid-row: 1/3;
+  grid-column: 1/-1;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(36, 1fr);
+  grid-template-rows: 1fr;
+  height: 100%;
+  justify-content: flex-start;
+
+  &__nav-section {
+    display: flex;
+    align-items: center;
+    column-gap: 6rem;
+    margin: var(--hero-logo-margin-top) 0 0 var(--hero-logo-margin-left);
+  }
+
+  &__ham-menu {
+    display: none;
+  }
+
+  &__nav-item {
+    color: utils.$white-color;
+    font-size: 1.5rem;
+    position: relative;
+  }
+
+  &__nav-item:not(:last-child) {
+    margin-right: 3rem;
+  }
+
+  &__nav-item:visited,
+  &__nav-item:active,
+  &__nav-item:link {
+    text-decoration: none;
+  }
+
+  &__nav-item:hover {
+    cursor: pointer;
+  }
+
+  &__nav-item::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    background-color: utils.$white-color;
+    bottom: -0.8rem;
+    left: 25%;
+    transform-origin: center;
+    transform: scale(0);
+    transition: transform 300ms;
+  }
+
+  &__nav-item:hover::after {
+    transform: scale(1);
+  }
+
+  &__slider-img {
+    grid-column: 1/22;
+    grid-row: 1;
+    background-image: url("../images/desktop-image-hero-1.jpg"),
+      url("../images/desktop-image-hero-2.jpg"),
+      url("../images/desktop-image-hero-3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+  }
+
+  &__slider-text {
+    grid-column: 22/37;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__text-title {
+    font-size: 4rem;
+    font-family: utils.$font-family;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+
+  &__text-body {
+    font-weight: 500;
+    line-height: 1.4;
+    color: utils.$dark-grey-color-1;
+    font-size: 1.4rem;
+  }
+
+  &__slider-nav {
+    height: 100%;
+    display: flex;
+    column-gap: 0;
+  }
+
+  &__text {
+    padding: var(--hero-text-padding-top) var(--hero-text-padding-sides)
+      var(--hero-text-padding-bottom) var(--hero-text-padding-sides);
+  }
+
+  @media screen and (max-width: 950px) {
+    height: fit-content;
+    &__slider-img {
+      grid-column: 1/-1;
+    }
+
+    &__slider-text {
+      grid-column: 1/-1;
+      grid-row: 2;
+      align-items: flex-end;
+    }
+
+    &__slider-nav {
+      order: -1;
+      transform: translateY(-100%);
+      height: 5rem;
+    }
+
+    &__slider-img {
+      background-image: url("../images/mobile-image-hero-1.jpg"),
+        url("../images/mobile-image-hero-2.jpg"),
+        url("../images/mobile-image-hero-3.jpg");
+      height: 36rem;
+    }
+  }
+
+  @media screen and (max-width: 570px) {
+    &__nav {
+      display: none;
+    }
+    &__ham-menu {
+      display: block;
+      height: 2px;
+      width: 3rem;
+      position: absolute;
+      margin-left: 2rem;
+      z-index: 15;
+    }
+
+    &__ham-menu--hide,
+    &__nav--hide {
+      display: none;
+    }
+
+    &__ham-menu--rotate &__menu-line {
+      visibility: hidden;
+    }
+
+    &__menu-line {
+      width: 100%;
+      height: 2px;
+      background-color: utils.$white-color;
+      position: absolute;
+      border: none;
+    }
+
+    &__ham-menu::before,
+    &__ham-menu::after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: utils.$white-color;
+      top: 1rem;
+      left: 0;
+      position: absolute;
+      transition: transform 1s;
+    }
+
+    &__ham-menu::after {
+      top: -1rem;
+    }
+
+    &__ham-menu--rotate::before,
+    &__ham-menu--rotate::after {
+      background-color: utils.$dark-grey-color-1;
+    }
+
+    &__ham-menu--rotate::after {
+      transform: translateY(1rem) rotate(-45deg);
+      transform-origin: center;
+    }
+
+    &__ham-menu--rotate::before {
+      transform: translateY(-1rem) rotate(45deg);
+      transform-origin: center;
+    }
+
+    &__nav-section {
+      margin: var(--hero-logo-margin-top) 0;
+    }
+
+    &__logo {
+      margin: 0 auto;
+    }
+  }
+}
+
+.background-animation-next {
+  transition: background-position-x 5s ease-in-out;
+  background-position-x: var(--slider-img-width), 0, 0;
+}
+
+.background-animation-prev {
+  transition: background-position-x 5s ease-in-out;
+  background-position-x: calc(var(--slider-img-width) * -1), 0, 0;
+}

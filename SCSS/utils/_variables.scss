@@ -1,0 +1,40 @@
+$dark-grey-color-1: hsl(0, 0%, 63%);
+$black-color: hsl(0, 0%, 0%);
+$white-color: hsl(0, 0%, 100%);
+$dark-grey-color-2: hsl(0, 0%, 27%);
+
+//TYPOGRAPHY
+$font-family: "League Spartan", sans-serif;
+$body-font-size: 1.2rem;
+
+:root {
+  --hero-text-padding-top: 6rem;
+  --hero-text-padding-sides: 10rem;
+  --hero-text-padding-bottom: 5rem;
+  --hero-logo-margin-top: 4.5rem;
+  --hero-logo-margin-left: 4.5rem;
+  --about-text-margin-top: 4rem;
+  --about-text-margin-left: 4rem;
+  --about-text-margin-right: 4rem;
+  --slider-img-width: calc(7 / 12 * 100vw);
+}
+
+@media screen and (min-width: 1400px) {
+  :root {
+    --hero-text-padding-top: 12rem;
+    --hero-text-padding-bottom: 10rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  :root {
+    --hero-text-padding-sides: 6rem;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  :root {
+    --hero-text-padding-top: 3rem;
+    --hero-text-padding-bottom: 4rem;
+  }
+}

@@ -1,0 +1,57 @@
+@use "../utils/" as utils;
+
+.btn {
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+  color: utils.$dark-grey-color-1;
+}
+
+.btn--cta {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 2rem;
+  color: utils.$black-color;
+}
+
+.btn--cta:hover {
+  cursor: pointer;
+  color: utils.$dark-grey-color-1;
+}
+
+.btn--cta:hover img {
+  opacity: 0.4;
+
+  animation: cta-move 1s infinite;
+}
+
+.btn--slider-nav {
+  height: 100%;
+  background-color: utils.$black-color;
+  width: calc(100vw / 18);
+}
+
+.btn--slider-nav:hover {
+  background-color: utils.$dark-grey-color-2;
+  cursor: pointer;
+}
+
+@keyframes cta-move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(1rem);
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .btn--slider-nav {
+    height: 100%;
+    background-color: utils.$black-color;
+    width: 5rem;
+  }
+}
