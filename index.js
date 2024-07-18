@@ -38,11 +38,6 @@ collapsedMenu.addEventListener("click", () => {
   }
 });
 
-setNavVisibility();
-window.addEventListener("resize", () => {
-  setNavVisibility();
-});
-
 const sliderItems = [
   {
     img: "./images/desktop-image-hero-1.jpg",
@@ -75,6 +70,26 @@ const sliderItems = [
     },
   },
 ];
+
+setNavVisibility();
+updateImages();
+window.addEventListener("resize", () => {
+  setNavVisibility();
+  updateImages();
+});
+
+function updateImages() {
+  const clientWidth = document.body.clientWidth;
+  if (clientWidth < 570) {
+    sliderItems.forEach(
+      (item) => (item.img = item.img.replace("desktop", "mobile"))
+    );
+  } else {
+    sliderItems.forEach(
+      (item) => (item.img = item.img.replace("mobile", "desktop"))
+    );
+  }
+}
 
 function swapElements(first, second) {
   const tempPos = sliderItems[first];

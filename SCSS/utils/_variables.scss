@@ -38,3 +38,9 @@ $body-font-size: 1.2rem;
     --hero-text-padding-bottom: 4rem;
   }
 }
+
+@media screen and (max-width: 570px) {
+  :root {
+    --slider-img-width: 100vw;
+  }
+}
